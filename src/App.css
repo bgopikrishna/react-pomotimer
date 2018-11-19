@@ -1,32 +1,119 @@
-.App {
+@import url("https://fonts.googleapis.com/css?family=Nova+Mono|Orbitron|Montserrat+Subrayada");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-image: radial-gradient(
+    circle,
+    #00d0fd,
+    #00b5ff,
+    #0098ff,
+    #0078f7,
+    #1c51e2
+  );
+}
+button {
+  outline: none;
+  border: none;
+  background: none;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+  color: black;
+  margin: auto 40px;
+  font-family: monospace;
+}
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 98vh;
+}
+.app {
+  color: black;
+  font-size: 30px;
   text-align: center;
+  text-transform: capitalize;
+
+  font-family: "Montserrat Subrayada", sans-serif;
+  min-width: 300px;
+}
+.title {
+  margin-bottom: 20px;
+}
+.length {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 24px;
+  justify-content: space-around;
+}
+.length .length-controls {
+  margin: 10px;
+  font-weight: bolder;
+  font-size: inherit;
+}
+.length .length-controls #break-length,
+.length .length-controls #session-length {
+  display: inline-block;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+#break-length, #session-length {
+  font-family: monospace;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.timer {
+  font-family: "Orbitron", sans-serif;
+  font-weight: bolder;
+  border: 3px solid black;
+  margin: 10px auto;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 75%;
+  text-transform: uppercase;
+}
+
+.timer .timer-wrapper {
+  position: absolute;
+  width: 190px;
+  height: 110px;
+  left: 50%;
+  top: 50%;
+  margin-left: -95px;
+  margin-top: -50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+.timer-controls button {
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in-out;
+  background: #444655;
+  border-radius: 15px;
+  padding: 10px;
+  color: #e6f4f1;
+  width: 40px;
+  height: 40px;
+  background: #000000;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 900px) {
+  body {
+    overflow: hidden;
   }
-  to {
-    transform: rotate(360deg);
+  #root {
+    padding: 20px;
+    font-size: 20px;
+  }
+  h1 {
+    font-size: 1.2em;
+    text-shadow: 4px 4px 4px #1c51e2;
+    font-weight: bolder;
   }
 }
