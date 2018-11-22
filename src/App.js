@@ -52,7 +52,8 @@ export class App extends Component {
         const { sessionLength } = this.state;
         if (sessionLength > 1 && sessionLength <= 60) {
           this.setState({
-            sessionLength: sessionLength - 1
+            sessionLength: sessionLength - 1,
+            secondsLeft: (sessionLength - 1) * 60,
           });
         }
       }
@@ -105,10 +106,12 @@ export class App extends Component {
             secondsLeft: this.state.breakLength * 60
           });
         } else {
+          clearInterval(countdown)
           this.setState({
             presentSesh: "session",
             secondsLeft: this.state.sessionLength * 60
           });
+          this.startTimer();
         }
       }
       if (this.state.secondsLeft === 0) {
