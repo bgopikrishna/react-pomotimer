@@ -11,12 +11,10 @@ export class App extends Component {
     sessionLength: 25,
     secondsLeft: 1500,
     timeLeft: 1500,
-    reverseTimer: false,
     presentSesh: "session",
     timerState: "pause",
     isPaused: true,
 
-    timerFunc: ""
   };
 
   increment = type => {
@@ -60,14 +58,13 @@ export class App extends Component {
     }
   };
 
-  handleReset = async () => {
+  handleReset =  () => {
 
     this.setState({
       breakLength: 5,
       sessionLength: 25,
       secondsLeft: 1500,
       timeLeft: 1500,
-      reverseTimer: false,
       presentSesh: "session",
       timerState: "pause",
       isPaused: true
