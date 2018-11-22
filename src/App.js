@@ -116,7 +116,7 @@ export class App extends Component {
   };
 
   render() {
-    const { breakLength, sessionLength, secondsLeft, presentSesh } = this.state;
+    const { breakLength, sessionLength, secondsLeft, presentSesh, isPaused } = this.state;
     return (
       <div className="app">
         <div className="title">
