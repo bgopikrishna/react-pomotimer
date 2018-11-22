@@ -12,118 +12,110 @@ export class App extends Component {
     secondsLeft: 1500,
     timeLeft: 1500,
     reverseTimer: false,
-    presentSesh: "Session",
-    timerState: "pause"
+    presentSesh: "session",
+    timerState: "pause",
+    isPaused: true,
+
+    timerFunc: ""
   };
 
   increment = type => {
-    if (type === "break") {
-      const { breakLength } = this.state;
-      if (breakLength > 0 && breakLength < 60) {
-        this.setState({
-          breakLength: breakLength + 1
-        });
-      }
-    } else {
-      const { sessionLength } = this.state;
-      if (sessionLength > 0 && sessionLength < 60) {
-        this.setState({
-          sessionLength: sessionLength + 1
-        });
+    if (this.state.isPaused) {
+      if (type === "break") {
+        const { breakLength } = this.state;
+        if (breakLength > 0 && breakLength < 60) {
+          this.setState({
+            breakLength: breakLength + 1
+          });
+        }
+      } else {
+        const { sessionLength } = this.state;
+        if (sessionLength > 0 && sessionLength < 60) {
+          this.setState({
+            sessionLength: sessionLength + 1,
+            secondsLeft: (sessionLength + 1) * 60
+          });
+        }
       }
     }
   };
   decrement = type => {
-    if (type === "break") {
-      const { breakLength } = this.state;
-      if (breakLength > 1 && breakLength <= 60) {
-        this.setState({
-          breakLength: breakLength - 1
-        });
-      }
-    } else {
-      const { sessionLength } = this.state;
-      if (sessionLength > 1 && sessionLength <= 60) {
-        this.setState({
-          sessionLength: sessionLength - 1
-        });
+    if (this.state.isPaused) {
+      if (type === "break") {
+        const { breakLength } = this.state;
+        if (breakLength > 1 && breakLength <= 60) {
+          this.setState({
+            breakLength: breakLength - 1
+          });
+        }
+      } else {
+        const { sessionLength } = this.state;
+        if (sessionLength > 1 && sessionLength <= 60) {
+          this.setState({
+            sessionLength: sessionLength - 1
+          });
+        }
       }
     }
   };
 
-  pomotimer = seconds => {
-    //clear existing timers
-    // clear any existing timers
-    clearInterval(countdown);
+  handleReset = async () => {
 
-    const now = Date.now();
-    const then = now + seconds * 1000;
-
-    countdown = setInterval(() => {
-      const secondsLeft = Math.round((then - Date.now()) / 1000);
-
-      // check if we should stop it!
-      if (secondsLeft < 0) {
-        this.setState(
-          {
-            reverseTimer: !this.setState.reverseTimer
-          },
-          this.correctTimer(this.setState.reverseTimer)
-        );
-        clearInterval(countdown);
-        return;
-      }
-      // display it
-
-      this.setState({
-        timeLeft: secondsLeft
-      });
-    }, 1000);
-  };
-
-  handleReset = () => {
     this.setState({
       breakLength: 5,
       sessionLength: 25,
       secondsLeft: 1500,
       timeLeft: 1500,
-      reverseTimer: true,
-      presentSesh: "Session",
-      timerState: "pause"
+      reverseTimer: false,
+      presentSesh: "session",
+      timerState: "pause",
+      isPaused: true
     });
+    clearInterval(countdown);
+
+    this.myaudio.pause();
+    this.myaudio.currentTime = 0;
   };
   handleTimer = () => {
-    this.correctTimer(this.state.reverseTimer);
-  };
-
-  correctTimer = reverseTimer => {
-    const {
-      breakLength,
-      sessionLength,
-      secondsLeft,
-      timeLeft,
-      presentSesh,
-      timerState
-    } = this.state;
-    if (!reverseTimer) {
-      this.setState(
-        {
-          presentSesh: "session",
-          secondsLeft: sessionLength * 60,
-          timerState: "start"
-        },
-        this.pomotimer(secondsLeft)
-      );
+    if (this.state.isPaused) {
+      this.startTimer();
+      this.setState({
+        timerState: "started",
+        isPaused: false
+      });
     } else {
-      this.setState(
-        {
-          presentSesh: "break",
-          secondsLeft: breakLength * 60,
-          timerState: "start"
-        },
-        this.pomotimer(secondsLeft)
-      );
+      clearInterval(countdown);
+      this.setState({
+        timerState: "pause",
+        isPaused: true
+      });
     }
+  };
+  startTimer = () => {
+    countdown = setInterval(() => {
+      this.setState({
+        secondsLeft: this.state.secondsLeft - 1
+      });
+
+      
+      if (this.state.secondsLeft < 0) {
+        if (this.state.presentSesh === "session") {
+          this.setState({
+            presentSesh: "break",
+            secondsLeft: this.state.breakLength * 60
+          });
+        } else {
+          this.setState({
+            presentSesh: "session",
+            secondsLeft: this.state.sessionLength * 60
+          });
+        }
+      }
+      if (this.state.secondsLeft === 0) {
+        this.myaudio.currentTime = 0;
+        this.myaudio.play();
+      }
+    }, 1000);
   };
 
   render() {
@@ -156,12 +148,17 @@ export class App extends Component {
         </div>
         <Timer
           presentSesh={presentSesh}
-          secondsLeft={timeLeft}
+          secondsLeft={secondsLeft}
           sessionLength={sessionLength}
         />
         <TimerControls
           handleReset={this.handleReset}
           handleTimer={this.handleTimer}
+        />
+        <audio
+          src="https://www.dropbox.com/s/v007rwxvtxv4t8h/Timed_Out.mp3?dl=1"
+          id="beep"
+          ref={audio => (this.myaudio = audio)}
         />
       </div>
     );
