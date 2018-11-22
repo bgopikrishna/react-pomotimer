@@ -13,8 +13,7 @@ export class App extends Component {
     timeLeft: 1500,
     presentSesh: "session",
     timerState: "pause",
-    isPaused: true,
-
+    isPaused: true
   };
 
   increment = type => {
@@ -51,15 +50,14 @@ export class App extends Component {
         if (sessionLength > 1 && sessionLength <= 60) {
           this.setState({
             sessionLength: sessionLength - 1,
-            secondsLeft: (sessionLength - 1) * 60,
+            secondsLeft: (sessionLength - 1) * 60
           });
         }
       }
     }
   };
 
-  handleReset =  () => {
-
+  handleReset = () => {
     this.setState({
       breakLength: 5,
       sessionLength: 25,
@@ -95,7 +93,6 @@ export class App extends Component {
         secondsLeft: this.state.secondsLeft - 1
       });
 
-      
       if (this.state.secondsLeft < 0) {
         if (this.state.presentSesh === "session") {
           this.setState({
@@ -103,7 +100,7 @@ export class App extends Component {
             secondsLeft: this.state.breakLength * 60
           });
         } else {
-          clearInterval(countdown)
+          clearInterval(countdown);
           this.setState({
             presentSesh: "session",
             secondsLeft: this.state.sessionLength * 60
@@ -119,14 +116,7 @@ export class App extends Component {
   };
 
   render() {
-    const {
-      breakLength,
-      sessionLength,
-      secondsLeft,
-      timeLeft,
-      reverseTimer,
-      presentSesh
-    } = this.state;
+    const { breakLength, sessionLength, secondsLeft, presentSesh } = this.state;
     return (
       <div className="app">
         <div className="title">
@@ -154,6 +144,7 @@ export class App extends Component {
         <TimerControls
           handleReset={this.handleReset}
           handleTimer={this.handleTimer}
+          isPaused={isPaused}
         />
         <audio
           src="https://www.dropbox.com/s/v007rwxvtxv4t8h/Timed_Out.mp3?dl=1"
