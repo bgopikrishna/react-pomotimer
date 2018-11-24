@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Abel|Chakra+Petch|Orbitron&effect=3d-float");
 
-* {
-  padding: 0;
-  margin: 0;
-}
+
 body {
   background-image: linear-gradient(
     to right bottom,
@@ -13,6 +10,9 @@ body {
     #009eff,
     #4577eb
   );
+}
+h4 , h1, h2,h3 {
+  margin: 0;
 }
 button {
   outline: none;
@@ -32,6 +32,15 @@ button {
   justify-content: center;
   align-items: center;
   min-height: 95vh;
+  background-image: linear-gradient(
+    to right bottom,
+    #48f0d3,
+    #00d9ea,
+    #00befd,
+    #009eff,
+    #4577eb
+  );
+  padding: 0;
 }
 .app {
   color: #221812;
