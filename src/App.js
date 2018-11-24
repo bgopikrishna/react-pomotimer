@@ -120,7 +120,7 @@ export class App extends Component {
     return (
       <div className="app">
         <div className="title">
-          <h1>Pomodoro Timer</h1>
+          <h1 className="font-effect-3d-float" style={{color: "inherit"}}>Pomodoro Timer</h1>
         </div>
         <div className="length">
           <LengthContols
