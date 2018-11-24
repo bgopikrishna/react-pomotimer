@@ -11,6 +11,9 @@ body {
     #4577eb
   );
 }
+* {
+  padding: 0;
+}
 h4 , h1, h2,h3 {
   margin: 0;
 }
@@ -126,9 +129,13 @@ button {
     overflow: hidden;
     font-size: 0.7em;
   }
+  * {
+    margin: 0;
+    padding: 0;
+  }
   #root {
-    padding: 20px;
     font-size: 20px;
+    height: 100vh;
   }
   button, .timer-controls button {
     margin: auto 20px;
@@ -139,8 +146,13 @@ button {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 580px) {
   body {
     overflow: scroll;
+  }
+  #root {
+    overflow: scroll;
+    min-height: 100vh;
+    height: auto;
   }
 }
