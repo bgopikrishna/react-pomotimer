@@ -31,7 +31,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 95vh;
+  min-height: 98vh;
   background-image: linear-gradient(
     to right bottom,
     #48f0d3,
