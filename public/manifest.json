@@ -1,8 +1,8 @@
 {
-  "name": "Pomodoro Timer",
+  "name": "Pomotimer",
   "short_name": "PomoTimer",
-  "theme_color": "#007cf8",
-  "background_color": "#007CF8",
+  "theme_color": "#ec3f3e",
+  "background_color": "#2196f3",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/.",
