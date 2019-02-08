@@ -12,7 +12,7 @@ const LengthContols = ({ type, length, increment, decrement }) => {
         onClick={() => decrement(type)}
         title={"Decrease " + type + " length"}
       >
-        -
+       &#8722;
       </button>
       <div id={type + "-length"}>{length}</div>
       <button
@@ -21,7 +21,7 @@ const LengthContols = ({ type, length, increment, decrement }) => {
         onClick={() => increment(type)}
         title={"Increase " + type + " length"}
       >
-        +{" "}
+      &#43;
       </button>
     </div>
   );
