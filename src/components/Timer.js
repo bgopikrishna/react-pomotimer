@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { displaySecondsLeft } from "../helperFunctions/displaySeconds";
 
 const Timer = ({ presentSesh, secondsLeft, sessionLength }) => {
@@ -10,7 +10,9 @@ const Timer = ({ presentSesh, secondsLeft, sessionLength }) => {
     <div className="timer">
       <div className="timer-wrapper">
         <div id="timer-label">{presentSesh}</div>
-        <div id="time-left">{display}</div>
+        <div id="time-left" >
+          {display}
+        </div>
       </div>
     </div>
   );

@@ -116,11 +116,19 @@ export class App extends Component {
   };
 
   render() {
-    const { breakLength, sessionLength, secondsLeft, presentSesh, isPaused } = this.state;
+    const {
+      breakLength,
+      sessionLength,
+      secondsLeft,
+      presentSesh,
+      isPaused
+    } = this.state;
     return (
       <div className="app">
         <div className="title">
-          <h1 className="font-effect-3d-float" style={{color: "inherit"}}>Pomodoro Timer</h1>
+          <h1 className="font-effect-3d-float" style={{ color: "inherit" }}>
+            Pomodoro Timer
+          </h1>
         </div>
         <div className="length">
           <LengthContols

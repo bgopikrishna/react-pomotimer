@@ -1,33 +1,41 @@
-@import url("https://fonts.googleapis.com/css?family=Abel|Chakra+Petch|Orbitron&effect=3d-float");
-
+/* @import url("https://fonts.googleapis.com/css?family=Abel|Chakra+Petch|Orbitron&effect=3d-float"); */
+@import url("https://fonts.googleapis.com/css?family=Righteous|VT323");
 
 body {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to right bottom,
     #48f0d3,
     #00d9ea,
     #00befd,
     #009eff,
     #4577eb
-  );
+  ); */
+  /* background: url("./images/tomato.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: hue; */
+  background: #feedd3;
+  font-family: "Righteous", sans-serif;
 }
 * {
   padding: 0;
 }
-h4 , h1, h2,h3 {
+h4,
+h1,
+h2,
+h3 {
   margin: 0;
 }
 button {
   outline: none;
   border: none;
-  background: transparent !important;
+  background: transparent;
   display: inline-block;
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
-  color: black;
+  color: inherit;
   margin: auto 40px;
-  font-family: monospace;
   border-radius: 5px;
 }
 #root {
@@ -35,23 +43,22 @@ button {
   justify-content: center;
   align-items: center;
   min-height: 98vh;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to right bottom,
     #48f0d3,
     #00d9ea,
     #00befd,
     #009eff,
     #4577eb
-  );
+  ); */
   padding: 0;
 }
 .app {
-  color: #221812;
+  color: #ec3f3e;
   font-size: 30px;
   text-align: center;
   text-transform: capitalize;
 
-  font-family: "Chakra Petch", sans-serif;
   min-width: 300px;
 }
 .title {
@@ -63,14 +70,20 @@ button {
   flex-wrap: wrap;
   font-size: 24px;
   justify-content: space-around;
-  /* font-family: 'Abel', sans-serif; */
-  background: rgba(247, 242, 242, 0.178);
   padding: 15px 8px;
   /* box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.178) */
 }
 .length .length-controls {
-  font-weight: bolder;
   font-size: inherit;
+}
+.length button {
+  background: rgba(240, 140, 164, 0.1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.length button:hover,
+.length button:focus {
+  background: #cb3837;
+  color: #feedd3;
 }
 .length .length-controls #break-length,
 .length .length-controls #session-length {
@@ -83,19 +96,15 @@ button {
 #break-length,
 #session-length {
   min-width: 45px;
-  font-family: "Orbitron", sans-serif;
 }
 
-
 .timer {
-  font-family: "Orbitron", sans-serif;
-  font-weight: bolder;
-  border: 5px solid #221812;
+  border: 5px solid #ec3f3e;
   margin: 10px auto;
   width: 200px;
-  height: 200px;
+  height: 100px;
   position: relative;
-  border-radius: 75%;
+  border-radius: 15px;
   text-transform: uppercase;
 }
 
@@ -112,6 +121,7 @@ button {
   justify-content: center;
   align-items: center;
 }
+
 .timer-controls button {
   font-size: 16px;
   text-transform: uppercase;
@@ -137,12 +147,12 @@ button {
     font-size: 20px;
     height: 100vh;
   }
-  button, .timer-controls button {
+  button,
+  .timer-controls button {
     margin: auto 20px;
   }
   h1 {
     font-size: 1em;
-    font-weight: bolder;
   }
 }
 
